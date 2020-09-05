@@ -1,10 +1,14 @@
 const express = require('express')
 const morgan = require('morgan')
+const bodyParser = require('body-parser');
 const app = express()
 const produtosRotas = require('./routes/produtos_router')
 const pedidosRotas = require('./routes/pedidos_router')
 
 app.use(morgan('dev'))//Retorna um Log
+app.use(bodyParser.urlencoded({ extend: false }))//Apenas dados simples
+app.use(bodyParser.json()); //Aceitar apenas formato JSON
+
 
 //CORS
 app.use((req, res, next) => {
@@ -40,9 +44,6 @@ app.use((error, req, res, next) => {
         }
     })
 })
-
-
-
 
 
 module.exports = app
