@@ -5,6 +5,7 @@
 
 ### clone repositorio
 ### npm install
+### npx knex migrate:latest
 ### npm start
 
 
