@@ -13,7 +13,7 @@ app.use(bodyParser.json()); //Aceitar apenas formato JSON
 //CORS
 app.use((req, res, next) => {
     res.header('Acess-Control-Allow-Origin', '*')//Onde tem o * poderia colocar a URL que ele permite não todos como esta
-    res.header('Acess-Control-Allow-Header', 'Content-Type, Origin, X-Requested-With, Accept, Authorization')
+    res.header('Acess-Control-Allow-Header', 'Content-Type, Origin, X-Requested-With, Accept, Authorization, X-Total-Count')
 
 
     if (req.method === 'OPTIONS') {
