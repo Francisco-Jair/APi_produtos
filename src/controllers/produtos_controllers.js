@@ -4,6 +4,7 @@ module.exports = {
 
     async allProdutos(req, res, next) {
         const result = await knex('produtos')
+        .where('deleted_at', null)
         return res.json(result)
     },
 
@@ -83,7 +84,10 @@ module.exports = {
             if (result.length === 0) {
                 return res.status(201).send('Produto inexistente')
             } else {
-                await knex('produtos').where({ id }).del()
+                await knex('produtos')
+                    .where({ id })
+                    .update('deleted_at', new Date())
+                // .del()
                 return res.status(201).send('Produto deletado com sucessos')
             }
 

@@ -13,6 +13,7 @@ module.exports = {
                     .where({ produtos_id })
                     .join('produtos', 'produtos.id', '=', 'pedidos.produtos_id')
                     .select('produtos.*', 'pedidos.quantidade')
+                    .where('produtos.deleted_at', null)
 
                 countObj.where({ produtos_id })
             }
